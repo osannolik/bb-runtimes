@@ -62,6 +62,8 @@ def build_configs(target):
         t = Stm32(target)
     elif target == 'openmv2':
         t = Stm32(target)
+    elif target == 'motorcontrol':
+        t = Stm32(target)
     elif target == 'tms570':
         t = TMS570()
     elif target == 'lm3s':

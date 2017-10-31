@@ -354,6 +354,8 @@ class Stm32(CortexMTarget):
             self.mcu = 'stm32f7x'
         elif self.board == 'stm32f769disco':
             self.mcu = 'stm32f7x9'
+        elif self.board == 'motorcontrol':
+            self.mcu = 'stm32f446'
         else:
             assert False, "Unknown stm32 board: %s" % self.board
 
@@ -394,6 +396,11 @@ class Stm32(CortexMTarget):
         elif self.board == 'stm32f769disco':
             self.add_sources('crt0', [
                 'src/s-stm32__f7x.adb'])
+        elif self.board == 'motorcontrol':
+            self.add_sources('crt0', [
+                'src/s-stm32__f446x.adb'])
+            self.update_pair(
+                's-bbbopa.ads', 'arm/stm32/%s/s-bbbopa-motorcontrol.ads' % self.mcu)
 
         # ravenscar support
         self.add_sources('gnarl', [
